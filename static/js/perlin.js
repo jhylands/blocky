@@ -5,9 +5,16 @@ for(var i=0;i<128;i++){
         permutation[i][j]=Math.round(Math.random()*128);
   }
 }
+
+var vectors = []
+for(var i=0;i<128;i++){
+    var theta = i*Math.PI*2/128;
+    vectors[i] = [Math.cos(theta), Math.sin(theta)];
+}
+
 PerlinNoise = new function() {
     this.noise = function(x, y) {
-         const max= 64;
+         const max= 127;
          if(x<0){
        x = max - (Math.abs(x)%max);
        }else{
@@ -42,9 +49,9 @@ PerlinNoise = new function() {
         return acc;
        }
        function grad(hash, x, y) {
-                var vectors = [[1,0],[0,1],[-1,0],[0,-1]];
+//                var vectors = [[1,0],[0,1],[-1,0],[0,-1]];
     
-              return dot(vectors[hash%4],[x,y]);
+              return dot(vectors[hash%128],[x,y]);
        } 
        function scale(n) { return (1 + n)/2; }
 }

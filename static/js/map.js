@@ -17,15 +17,14 @@ var n_scale=1;
 var shader = function(x, y, w, h) {
     x += controls.offset.x;
     y += controls.offset.y;
-//    x /= w;
-//    y /= h; // normalize
-    
     x *=controls.zoom/100;
     y *=controls.zoom/100;
     return terrain.to_colour(x, y)
 };
 
 var manipulateImageData = function(canvas, shader) {
+    canvas.width = 1920;
+    canvas.height = 1080;
     var w = canvas.width;
     var h = canvas.height;
     var context  = canvas.getContext("2d");
