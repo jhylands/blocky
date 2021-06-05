@@ -1,10 +1,11 @@
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, request
 import os
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
+    content = request.get_json() or {}
     return send_from_directory("static", "index.html")
 
 
