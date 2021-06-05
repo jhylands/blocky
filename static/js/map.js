@@ -23,8 +23,8 @@ var shader = function(x, y, w, h) {
 };
 
 var manipulateImageData = function(canvas, shader) {
-    canvas.width = 1920;
-    canvas.height = 1080;
+    canvas.width = 1920/5;
+    canvas.height = 1080/5;
     var w = canvas.width;
     var h = canvas.height;
     var context  = canvas.getContext("2d");
